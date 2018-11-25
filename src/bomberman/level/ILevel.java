@@ -6,6 +6,9 @@
 
 package bomberman.level;
 
+import bomberman.exceptions.LevelException;
+
 public interface ILevel {
 	
+	public void loadLevel(String path) throws LevelException;
 }
