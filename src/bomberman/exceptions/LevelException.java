@@ -10,6 +10,7 @@ package bomberman.exceptions;
  * Ngoại lệ khi load level
  */
 public class LevelException extends GameException {
+	
 	public LevelException() {}
 	
 	public LevelException(String str) {

@@ -10,6 +10,7 @@ package bomberman.exceptions;
  * Ngoại lệ khi load game
  */
 public class GameException extends Exception {
+	
 	public GameException() {}
 	
 	public GameException(String str) {
