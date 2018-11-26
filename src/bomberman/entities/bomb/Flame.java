@@ -123,6 +123,10 @@ public class Flame extends Entity {
 	 * Vị trí của các phân đoạn Flame
 	 */
 	public FlameSegment flameSegmentAt(int x, int y) {
+		for (int i = 0; i < _flameSegments.length; i++) {
+			if(_flameSegments[i].getX() == x && _flameSegments[i].getY() == y)
+				return _flameSegments[i];
+		}
 		return null;
 	}
 }

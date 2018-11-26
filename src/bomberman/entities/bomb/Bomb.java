@@ -101,14 +101,18 @@ public class Bomb extends AnimatedEntity {
 	 * Cập nhật trạng thái vụ nổ
 	 */
 	protected void updateExplosion() {
-
+		for (int i = 0; i < _flames.length; i++) {
+			_flames[i].update();
+		}
 	}
 	
 	/**
 	 * Cập nhật hình ảnh vụ nổ
 	 */
 	protected void renderExplosion(Screen screen) {
-		
+		for (int i = 0; i < _flames.length; i++) {
+			_flames[i].render(screen);
+		}
 	}
 	
 	/**
@@ -135,6 +139,16 @@ public class Bomb extends AnimatedEntity {
 	 * Vị trí của các flame
 	 */
 	public FlameSegment flameSegmentAt(int x, int y) {
+		if(!_exploded)
+			return null;
+		
+		for (int i = 0; i < _flames.length; i++) {
+			if(_flames[i] == null)
+				return null;
+			FlameSegment e = _flames[i].flameSegmentAt(x, y);
+			if(e != null)
+				return e;
+		}
 		return null;
 	}
 	
