@@ -15,6 +15,7 @@ import bomberman.Board;
 import bomberman.Game;
 import bomberman.entities.LayeredEntity;
 import bomberman.entities.character.Bomber;
+import bomberman.entities.character.enemy.Pepe;
 import bomberman.entities.tile.Brick;
 import bomberman.entities.tile.Grass;
 import bomberman.entities.tile.Portal;
@@ -104,6 +105,10 @@ public class FileLevel extends Level {
 			case 'p':
 				_board.addCharacter(new Bomber(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
 				Screen.setOffset(0, 0);
+				_board.addEntity(pos, new Grass(x, y, Sprite.grass));
+				break;
+			case '1':
+				_board.addCharacter(new Pepe(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
 				_board.addEntity(pos, new Grass(x, y, Sprite.grass));
 				break;
 			default:
