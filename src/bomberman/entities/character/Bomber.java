@@ -9,6 +9,7 @@ package bomberman.entities.character;
 import java.util.ArrayList;
 
 import bomberman.Board;
+import bomberman.Game;
 import bomberman.entities.Entity;
 import bomberman.entities.bomb.Bomb;
 import bomberman.entities.character.enemy.Enemy;
@@ -27,8 +28,6 @@ public class Bomber extends Character {
 	protected int _timeBetweenPutBombs = 0;	//thời gian giữa 2 bomb được đặt
 	protected int _finalAnimation = 25;	//thời gian xử lý hiệu ứng (<timeAnimate để tránh lặp lại hiệu ứng)
 
-
-	
 	/**
 	 * Hiển thị hình ảnh của thực thể Bomber
 	 * @param x
@@ -102,19 +101,51 @@ public class Bomber extends Character {
 	protected void calculateMove() {
         // TODO: Xử lý nhận tín hiệu điều khiển hướng đi từ _input và gọi move() để thực hiện di chuyển
         // TODO: Cập nhật lại giá trị của _moving khi thay đổi trạng thái di chuyển	
-
+		int xIn = 0, yIn = 0;
+		if(_input.up) yIn--;
+		if(_input.down) yIn++;
+		if(_input.left) xIn--;
+		if(_input.right) xIn++;
+		
+		
+		if(xIn != 0 || yIn != 0) {
+			move(xIn * Game.getBomberSpeed(), yIn * Game.getBomberSpeed());
+			_moving = true;
+		}
+		else {
+			_moving = false;
+		}
 	}
 
 	@Override
 	protected boolean canMove(double x, double y) {
         // TODO: Kiểm tra có đối tượng tại vị trí chuẩn bị di chuyển đến và có thể di chuyển tới đó hay không
+		for (int i = 0; i < 4; i++) {	//kiểm tra va chạm ở 4 góc người chơi
+			double xt = ((_x + x) + i % 2 * 11) / Game.TILES_SIZE;	//chia cho kích thước khối để di chuyển tới tọa độ từng khối
+			double yt = ((_y + y) + i / 2 * 12 - 13) / Game.TILES_SIZE;
+			
+			Entity a = _board.getEntity(xt, yt, this);
+			
+			if(!a.collide(this))
+				return false;
+		}
 		return true;
 	}
 	
 	@Override
 	protected void move(double xIn, double yIn) {
         // TODO: Sử dụng canMove() để kiểm tra xem có thể di chuyển tới điểm đã tính toán hay không và thực hiện thay đổi tọa độ _x, _y
-        // TODO: Cập nhật giá trị _direction sau khi di chuyển		
+        // TODO: Cập nhật giá trị _direction sau khi di chuyển
+		if(yIn < 0) _direction = 0;
+		if(xIn > 0) _direction = 1;
+		if(yIn > 0) _direction = 2;
+		if(xIn < 0) _direction = 3;
+
+		if(canMove(0, yIn))
+			_y += yIn;
+
+		if(canMove(xIn, 0))
+			_x += xIn;
 	}
 
 	@Override
