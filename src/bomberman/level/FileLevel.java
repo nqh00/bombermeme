@@ -20,6 +20,9 @@ import bomberman.entities.tile.Brick;
 import bomberman.entities.tile.Grass;
 import bomberman.entities.tile.Portal;
 import bomberman.entities.tile.Wall;
+import bomberman.entities.tile.item.BombItem;
+import bomberman.entities.tile.item.FlameItem;
+import bomberman.entities.tile.item.SpeedItem;
 import bomberman.exceptions.LevelException;
 import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
@@ -106,6 +109,24 @@ public class FileLevel extends Level {
 				_board.addCharacter(new Bomber(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
 				Screen.setOffset(0, 0);
 				_board.addEntity(pos, new Grass(x, y, Sprite.grass));
+				break;
+			case 'b':
+				_board.addEntity(pos, new LayeredEntity(x, y,
+						new Grass(x, y, Sprite.grass),
+						new BombItem(x, y, _level, Sprite.powerup_bombs),
+						new Brick(x, y, Sprite.brick)));
+				break;
+			case 'f':
+				_board.addEntity(pos, new LayeredEntity(x, y,
+						new Grass(x, y, Sprite.grass),
+						new FlameItem(x, y, _level, Sprite.powerup_flames),
+						new Brick(x, y, Sprite.brick)));
+				break;
+			case 's': 
+				_board.addEntity(pos, new LayeredEntity(x, y,
+						new Grass(x, y, Sprite.grass),
+						new SpeedItem(x, y, _level, Sprite.powerup_speed),
+						new Brick(x, y, Sprite.brick)));
 				break;
 			case '1':
 				_board.addCharacter(new Pepe(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
