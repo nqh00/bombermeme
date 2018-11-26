@@ -12,7 +12,14 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 import bomberman.Board;
+import bomberman.entities.LayeredEntity;
+import bomberman.entities.tile.Brick;
+import bomberman.entities.tile.Grass;
+import bomberman.entities.tile.Portal;
+import bomberman.entities.tile.Wall;
 import bomberman.exceptions.LevelException;
+import bomberman.graphics.Sprite;
+
 
 public class FileLevel extends Level {
 	
@@ -70,6 +77,30 @@ public class FileLevel extends Level {
 	 * @param y (tung độ)
 	 */
 	public void addLevelEntity(char c, int x, int y) {
-		// TODO: Sau khi tạo xong, gọi _board.addEntity() để thêm thực thể vào game		
+		// TODO: Sau khi tạo xong, gọi _board.addEntity() để thêm thực thể vào game
+		int pos = x + y * getWidth();
+		
+		switch(c) {
+			case '#':
+				_board.addEntity(pos, new Wall(x, y, Sprite.wall));
+				break;
+			case '*':
+				_board.addEntity(pos, new LayeredEntity(x, y, 
+						new Grass(x, y, Sprite.grass),
+						new Brick(x, y, Sprite.brick)));
+				break;
+			case 'x':
+				_board.addEntity(pos, new LayeredEntity(x, y, 
+						new Grass(x, y, Sprite.grass),
+						new Portal(x, y, _board, Sprite.portalIn),
+						new Brick(x, y, Sprite.brick)));
+				break;
+			case ' ':
+				_board.addEntity(pos, new Grass(x, y, Sprite.grass));
+				break;
+			default:
+				_board.addEntity(pos, new Grass(x, y, Sprite.grass));
+				break;
+		}
 	}
 }
