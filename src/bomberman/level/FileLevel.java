@@ -12,12 +12,15 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 import bomberman.Board;
+import bomberman.Game;
 import bomberman.entities.LayeredEntity;
+import bomberman.entities.character.Bomber;
 import bomberman.entities.tile.Brick;
 import bomberman.entities.tile.Grass;
 import bomberman.entities.tile.Portal;
 import bomberman.entities.tile.Wall;
 import bomberman.exceptions.LevelException;
+import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
 
 
@@ -96,6 +99,11 @@ public class FileLevel extends Level {
 						new Brick(x, y, Sprite.brick)));
 				break;
 			case ' ':
+				_board.addEntity(pos, new Grass(x, y, Sprite.grass));
+				break;
+			case 'p':
+				_board.addCharacter(new Bomber(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
+				Screen.setOffset(0, 0);
 				_board.addEntity(pos, new Grass(x, y, Sprite.grass));
 				break;
 			default:
