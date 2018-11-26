@@ -6,11 +6,124 @@
 
 package bomberman.entities.bomb;
 
+import bomberman.Board;
 import bomberman.entities.AnimatedEntity;
+import bomberman.entities.Entity;
+import bomberman.graphics.Screen;
+import bomberman.graphics.Sprite;
 
 /**
  * Thể hiện của thực thể bomb
  */
 public class Bomb extends AnimatedEntity {
+	protected Board _board;
+	protected Flame[] _flames;
+	private double _timeToExplode = 120; //2 giây thì nổ
+	private int _timeAfter = 50;	//thời gian lửa cháy
+	private boolean _exploded = false;	//bom chưa nổ
+	private boolean _allowedToPassThru = true;	//cho phép Bomber đi qua khi quả bomb được đặt
+		
+	/**
+	 * Hiển thị quả bomb do Bomber(người chơi) đặt
+	 * @param x
+	 * @param y
+	 * @param board
+	 */
+	public Bomb(int x, int y, Board board) {
+		_x = x;
+		_y = y;
+		_board = board;
+		setSprite(Sprite.bomb);
+	}
 	
+	@Override
+	public void update() {
+		// TODO: Cập nhật trạng thái quả bomb, xử lý quả bomb nổ
+		if(getTimeToExplode() > 0) 
+			_timeToExplode--;
+		else if(getTimeToExplode() == 0){
+			if(!isExplode())
+				explode();
+			else {
+				updateExplosion();
+				if(getTimeAfter() > 0)
+					_timeAfter--;
+				else
+					remove();
+			}
+		}
+		
+		animate();		
+	}
+	
+	@Override
+	public void render(Screen screen) {
+		// TODO: Cập nhật hình ảnh của quả bomb và vụ nổ theo trạng thái
+		if(!isExplode())
+			setSprite(Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, _animate, 20));
+		else {
+			setSprite(Sprite.voidSprite);
+			renderExplosion(screen);
+		}
+		int xt = (int)_x << 4;
+		int yt = (int)_y << 4;
+		
+		screen.renderEntity(xt, yt , this);		
+	}
+	
+	@Override
+	public boolean collide(Entity e) {
+        // TODO: Xử lý khi Bomber đi ra sau khi vừa đặt bom (_allowedToPassThru)
+
+		return false;
+	}
+	
+	/**
+	 * Cập nhật trạng thái vụ nổ
+	 */
+	protected void updateExplosion() {
+
+	}
+	
+	/**
+	 * Cập nhật hình ảnh vụ nổ
+	 */
+	protected void renderExplosion(Screen screen) {
+		
+	}
+	
+	/**
+	 * Xử lý bom nổ
+	 */
+	protected void explode() {
+		
+	}
+	
+	/**
+	 * Vị trí của các flame
+	 */
+	public FlameSegment flameSegmentAt(int x, int y) {
+		return null;
+	}
+	
+	/**
+	 * Getter: thời gian quả bom được nấu
+	 */
+	private double getTimeToExplode() {
+		return _timeToExplode;
+	}
+	
+	/**
+	 * Getter: thời gian lửa cháy
+	 */
+	public int getTimeAfter() {
+		return _timeAfter;
+	}
+	
+	/**
+	 * Getter: kiểm tra bomb đã nổ
+	 */
+	private boolean isExplode() {
+		return _exploded;
+	}
 }
