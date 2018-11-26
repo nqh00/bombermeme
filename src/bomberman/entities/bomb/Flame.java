@@ -8,6 +8,7 @@ package bomberman.entities.bomb;
 
 import bomberman.Board;
 import bomberman.entities.Entity;
+import bomberman.entities.character.Character;
 import bomberman.graphics.Screen;
 
 /**
@@ -73,7 +74,29 @@ public class Flame extends Entity {
 	 */
 	private int permitedRadius() {
 		//TODO: Tính toán độ dài của Flame
-		return 1;
+		int radius;
+		int x = (int)_x;
+		int y = (int)_y;
+		for (radius = 1; radius <= _radius; radius++) {
+			if(_direction == 1) y--;
+			if(_direction == 2) x++;
+			if(_direction == 3) y++;
+			if(_direction == 4) x--;
+			
+			Entity a = _board.getEntity(x, y, null);
+			
+			// TODO: Xử lý khi gặp 01 Thực thể là Character
+			if(a instanceof Character)
+				((Character)a).kill();
+			
+			if(a instanceof Bomb)
+				radius++;
+				
+			if(a.collide(this) == false)
+				break;	//nếu gặp thực thể không thể đi qua, độ dài sẽ bị cắt ngắn
+		}
+		
+		return radius;
 	}
 	
 	/**
