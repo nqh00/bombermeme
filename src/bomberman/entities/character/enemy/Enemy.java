@@ -16,6 +16,8 @@ import bomberman.entities.Message;
 import bomberman.entities.character.Bomber;
 import bomberman.entities.character.Character;
 import bomberman.entities.character.enemy.ai.AI;
+import bomberman.entities.character.enemy.ai.AILow;
+import bomberman.entities.character.enemy.ai.AIMedium;
 import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
 import bomberman.level.Coordinates;
@@ -83,17 +85,52 @@ public abstract class Enemy extends Character {
 	@Override
 	public void calculateMove() {
 		// TODO: Tính toán hướng đi và di chuyển Enemy theo _ai và cập nhật giá trị cho _direction
-
+		int xAI = 0, yAI = 0;
+		if(_steps <= 0) {
+			_direction = _ai.calculateDirection();
+			_steps = MAX_STEPS;
+		}
+		
+		if(getDirection() == 0) yAI--;
+		if(getDirection() == 1) xAI++;
+		if(getDirection() == 2) yAI++;
+		if(getDirection() == 3) xAI--;
+		
+		// TODO: Sử dụng canMove() để kiểm tra xem có thể di chuyển tới điểm đã tính toán hay không
+		// TODO: Sử dụng move() để di chuyển
+		// TODO: Cập nhật lại giá trị của _moving khi thay đổi trạng thái di chuyển
+		if(canMove(xAI, yAI)) {
+			_steps -= 1 + rest;
+			move(xAI * _speed, yAI * _speed);
+			_moving = true;
+		}
+		else {
+			_steps = 0;
+			_moving = false;
+		}
 	}
 	
 	@Override
 	public boolean canMove(double x, double y) {
-		return true;
+		double xr = _x, yr = _y - 16;
+		if(getDirection() == 0) {yr += _sprite.getSize() - 1; xr += _sprite.getSize() / 2;} 
+		if(getDirection() == 1) {yr += _sprite.getSize() / 2; xr += 1;}
+		if(getDirection() == 2) {xr += _sprite.getSize() / 2; yr += 1;}
+		if(getDirection() == 3) {xr += _sprite.getSize() - 1; yr += _sprite.getSize() / 2;}
+		
+		int xx = Coordinates.pixelToTile(xr) + (int)x;
+		int yy = Coordinates.pixelToTile(yr) + (int)y;
+
+		Entity a = _board.getEntity(xx, yy, this);	//thực thể của vị trí ta muốn đi tới
+		
+		return a.collide(this);
 	}
 	
 	@Override
 	public void move(double xAI, double yAI) {
-	
+		if(!isAlive()) return;
+		_x += xAI;
+		_y += yAI;
 	}
 	
 	@Override
@@ -148,5 +185,21 @@ public abstract class Enemy extends Character {
 		_deadSprite1 = dead1;
 		_deadSprite2 = dead2;
 		_deadSprite3 = dead3;
+	}
+	
+	/**
+	 * Triển khai thuật toán AILow
+	 */
+	protected void implementAILow() {
+		_ai = new AILow();
+		_direction = _ai.calculateDirection();
+	}
+	
+	/**
+	 * Triển khai thuật toán AIMedium
+	 */
+	protected void implementAIMedium(Enemy e) {
+		_ai = new AIMedium(_board.getBomber(), e);
+		_direction = _ai.calculateDirection();
 	}
 }
