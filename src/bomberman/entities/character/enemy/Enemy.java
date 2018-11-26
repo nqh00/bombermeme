@@ -107,13 +107,25 @@ public abstract class Enemy extends Character {
 	
 	@Override
 	public void kill() {
-
+		if(!isAlive()) return;
+		_alive = false;
+		_board.addPoints(_points);
+		Message msg = new Message(" +" + _points, getXMessage(), getYMessage(), 2, Color.WHITE, 16);
+		_board.addMessage(msg);
 	}
 	
 	
 	@Override
 	protected void afterKill() {
 		// TODO: Xử lý sau khi Enemy bị tiêu diệt
+		if(getTimeAfter() > 0)
+			_timeAfter--;
+		else {
+			if(_finalAnimation > 0)
+				_finalAnimation--;
+			else 
+				remove();
+		}
 	}
 	
 	/**
