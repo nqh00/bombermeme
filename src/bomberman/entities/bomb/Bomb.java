@@ -7,9 +7,12 @@
 package bomberman.entities.bomb;
 
 import bomberman.Board;
+import bomberman.Game;
 import bomberman.entities.AnimatedEntity;
 import bomberman.entities.Entity;
 import bomberman.entities.character.Bomber;
+import bomberman.entities.character.Character;
+import bomberman.entities.character.enemy.Enemy;
 import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
 import bomberman.level.Coordinates;
@@ -112,7 +115,20 @@ public class Bomb extends AnimatedEntity {
 	 * Xử lý bom nổ
 	 */
 	protected void explode() {
+		_exploded = true;
+		_allowedToPassThru = true;
 		
+		// TODO: Xử lý khi 01 Character đứng tại vị trí đặt Bomb
+		Character a = _board.getCharacterAt(_x, _y);
+		
+		if(a instanceof Character)
+			a.kill();
+		
+		// TODO: Tạo các Flame
+		_flames = new Flame[5];
+		for (int i = 0; i < _flames.length; i++) {
+			_flames[i] = new Flame((int)_x, (int)_y, i, Game.getBombRadius(), _board);
+		}
 	}
 	
 	/**
