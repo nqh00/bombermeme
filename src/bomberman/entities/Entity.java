@@ -6,6 +6,7 @@
 
 package bomberman.entities;
 
+import bomberman.graphics.IRender;
 import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
 import bomberman.level.Coordinates;
@@ -13,7 +14,7 @@ import bomberman.level.Coordinates;
 /**
  * Lớp đại diện cho tất cả thực thể trong game(Bomber, Enemy, Wall, Brick,...)
  */
-public abstract class Entity {
+public abstract class Entity implements IRender {
 	protected double _x, _y;
 	protected boolean _removed;
 	protected Sprite _sprite;
