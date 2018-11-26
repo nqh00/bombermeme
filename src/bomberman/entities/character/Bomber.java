@@ -6,12 +6,14 @@
 
 package bomberman.entities.character;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import bomberman.Board;
 import bomberman.Game;
 import bomberman.entities.Entity;
+import bomberman.entities.Message;
 import bomberman.entities.bomb.Bomb;
 import bomberman.entities.character.enemy.Enemy;
 import bomberman.entities.tile.item.Item;
@@ -88,7 +90,10 @@ public class Bomber extends Character {
 	@Override
 	public boolean collide(Entity e) {
 		// TODO: Xử lý va chạm với Enemy
-		
+		if(e instanceof Enemy) {
+			this.kill();
+			return false;
+		}
 		return true;
 	}
 	
@@ -154,12 +159,29 @@ public class Bomber extends Character {
 	@Override
 	public void kill() {
 		// TODO: Xử lý khi Bomber bị tiêu diệt
-
+        if (!isAlive()) return;
+        _alive = false;
+        _board.addLives(-1);
+        
+        Message msg0 = new Message("YOU GOT KILLED", getXMessage() + Game.TILES_SIZE, getYMessage() - Game.TILES_SIZE * 3, 2, Color.BLACK, 15);        
+        Message msg = new Message(" ↓♥", getXMessage(), getYMessage(), 2, Color.RED, 30);
+        _board.addMessage(msg0);
+        _board.addMessage(msg);
 	}
 
 	@Override
 	protected void afterKill() {
 		// TODO: Xử lý sau khi Bomber bị tiêu diệt
+		clearBombs();
+        if (_timeAfter > 0) _timeAfter--;
+        else {
+        	if(_finalAnimation > 0) _finalAnimation--;
+        	else {
+        		_board.respawn();
+	    		if(_board.getLives() == 0)
+	    			_board.endGame();
+        	}
+        }	
 	}
 	
 	/**
