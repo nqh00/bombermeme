@@ -7,6 +7,8 @@
 package bomberman.entities.tile;
 
 import bomberman.Board;
+import bomberman.entities.Entity;
+import bomberman.entities.character.Bomber;
 import bomberman.graphics.Sprite;
 
 /**
@@ -23,4 +25,23 @@ public class Portal extends Tile {
 		_board = board;
 	}
 
+	@Override
+	public void update() {
+		// TODO: Cập nhật lại trạng thái của Portal khi không còn enemy trên board
+		if(_board.detectNoEnemies())
+			setSprite(Sprite.portalOut);
+	}
+	
+	@Override
+	public boolean collide(Entity e) {
+		// TODO: Xử lý khi Bomber đi vào
+		if(e instanceof Bomber) {
+			if(e.getXTile() == getX() && e.getYTile() == getY()) {
+				if(_board.detectNoEnemies())
+					_board.nextLevel();
+			}
+		}
+		
+		return true;
+	}
 }
