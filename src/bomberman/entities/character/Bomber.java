@@ -7,6 +7,7 @@
 package bomberman.entities.character;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import bomberman.Board;
 import bomberman.Game;
@@ -17,6 +18,7 @@ import bomberman.entities.tile.item.Item;
 import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
 import bomberman.input.Keyboard;
+import bomberman.level.Coordinates;
 
 /**
  * Nhân vật của người chơi
@@ -173,7 +175,17 @@ public class Bomber extends Character {
         // TODO: Kiểm tra xem phím điều khiển đặt bom có được gõ và giá trị _timeBetweenPutBombs, Game.getBombRate() có thỏa mãn hay không
         // TODO: Game.getBombRate() sẽ trả về số lượng bom có thể đặt liên tiếp tại thời điểm hiện tại
         // TODO: _timeBetweenPutBombs dùng để ngăn chặn Bomber đặt 2 Bomb cùng tại 1 vị trí trong 1 khoảng thời gian quá ngắn
-
+    	
+    	if(_input.space && Game.getBombRate() > 0 && _timeBetweenPutBombs < 0) {
+    		int xt = Coordinates.pixelToTile(_x + _sprite.getSize() / 2);
+    		int yt = Coordinates.pixelToTile(_y + _sprite.getSize() / 2 - _sprite.getSize());	//trừ đi một nửa chiều cao của bomber và trừ đi tọa độ y
+    		
+            // TODO: Nếu 3 điều kiện trên thỏa mãn thì thực hiện đặt bom bằng placeBomb()
+            // TODO: Sau khi đặt, giảm số lượng Bomb Rate và reset _timeBetweenPutBombs về 0
+    		placeBomb(xt, yt);
+    		Game.addBombRate(-1);
+    		_timeBetweenPutBombs = 30;
+    	}
     }
 
     /**
@@ -181,13 +193,23 @@ public class Bomber extends Character {
      */
     protected void placeBomb(int x, int y) {
         // TODO: Thực hiện tạo đối tượng bom, đặt vào vị trí (x, y)
+    	Bomb b = new Bomb(x, y, _board);
+    	_board.addBomb(b);
     }
     
     /**
      * Xử lý khi bom đã nổ xong
      */
     private void clearBombs() {
-
+    	Iterator<Bomb> bs = _bombs.iterator();
+        Bomb b;
+        while (bs.hasNext()) {
+            b = bs.next();
+            if (b.isRemoved()) {
+                bs.remove();
+                Game.addBombRate(1);
+            }
+        }
     }
 	
 	/**
@@ -199,7 +221,7 @@ public class Bomber extends Character {
 	        	setSprite(Sprite.player_up);
 	            if(isMoving())
 	            	setSprite(Sprite.movingSprite(Sprite.player_up, Sprite.player_up1, Sprite.player_up2, _animate, 9));
-	            break;
+	            break;	
 	        case 1:
 	        	setSprite(Sprite.player_right);
 	            if(isMoving())
