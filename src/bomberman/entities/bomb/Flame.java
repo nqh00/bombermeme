@@ -38,7 +38,7 @@ public class Flame extends Entity {
 		_radius = radius;
 		_board = board;
 		_flameSegments = new FlameSegment[permitedRadius()];
-		createFlameSegments();
+		createFlame();
 	}
 
 	@Override
@@ -64,9 +64,29 @@ public class Flame extends Entity {
 	/**
 	 * Tạo các phân đoạn của Flame, mỗi phân đoạn ứng với một đơn vị độ dài
 	 */
-	private void createFlameSegments() {
+	private void createFlame() {
+		int x = (int)_x;
+		int y = (int)_y;
+		
+		// TODO: Mặc định độ dài của Flame là 1, chính là tâm của vụ nổ, vị trí đặt bomb
+		_flameSegments[0] = new FlameSegment(x, y, 0, false, _board);
+
 		// TODO: Biến last dùng để đánh dấu cho phân đoạn cuối cùng
+		boolean _last;
+		
 		// TODO: Tính toán độ dài Flame, tương ứng với số lượng phân đoạn và tạo các phân đoạn
+		for (int i = 1; i < _flameSegments.length; i++) {
+			_last = i == _flameSegments.length - 1 ? true : false;
+			
+			switch(_direction) {
+				case 1:	y--; break;
+				case 2:	x++; break;
+				case 3:	y++; break;
+				case 4:	x--; break;
+			}
+			_flameSegments[i] = new FlameSegment(x, y, _direction, _last, _board);
+		}
+
 	}
 	
 	/**
