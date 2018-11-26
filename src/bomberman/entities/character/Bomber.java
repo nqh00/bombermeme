@@ -188,7 +188,10 @@ public class Bomber extends Character {
 	 * Thêm Item cho Bomber
 	 */
 	public void addItem(Item i) {
-
+		if(i.isRemoved())
+			return;
+		_items.add(i);
+		i.setValue();
 	}
 
 	/**
