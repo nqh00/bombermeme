@@ -9,8 +9,10 @@ package bomberman.entities.bomb;
 import bomberman.Board;
 import bomberman.entities.AnimatedEntity;
 import bomberman.entities.Entity;
+import bomberman.entities.character.Bomber;
 import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
+import bomberman.level.Coordinates;
 
 /**
  * Thể hiện của thực thể bomb
@@ -74,7 +76,21 @@ public class Bomb extends AnimatedEntity {
 	@Override
 	public boolean collide(Entity e) {
         // TODO: Xử lý khi Bomber đi ra sau khi vừa đặt bom (_allowedToPassThru)
-
+		if(e instanceof Bomber) {
+			double diffX = e.getX() - Coordinates.tileToPixel(getX());
+			double diffY = e.getY() - Coordinates.tileToPixel(getY());
+			
+			// TODO: Kiểm tra xem bomber đã ra khỏi Tile quả bom chưa, nếu rồi thì không cho đi qua lại nữa
+			if(!(diffX >= -10 && diffX < 16 && diffY >= 1 && diffY <= 28))	//diffX, diffY tự test 
+				_allowedToPassThru = false;
+			
+			return _allowedToPassThru;
+		}
+		
+        // TODO: Xử lý va chạm với Flame của Bomb khác
+		if(e instanceof Flame)
+			_timeToExplode = 0;
+		
 		return false;
 	}
 	
