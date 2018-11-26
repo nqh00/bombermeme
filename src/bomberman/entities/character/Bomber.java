@@ -96,7 +96,8 @@ public class Bomber extends Character {
 	 * Tính phần bù của màn hình dựa vào vị trí Bomber
 	 */
     public void calculateOffset() {
-    	
+        int xScroll = Screen.calculateXOffset(_board, this);
+        Screen.setOffset(xScroll, 0);
 	}
 
 	@Override
