@@ -84,73 +84,74 @@ public class Sprite {
 		public static Sprite pepe_dead2 = new Sprite(16, 10, 3, SpriteSheet.tiles, 15, 15);
 		public static Sprite pepe_dead3 = new Sprite(16, 11, 3, SpriteSheet.tiles, 10, 9);
 	
-	//ONEAL
-		public static Sprite oneal_up = new Sprite(16, 12, 0, SpriteSheet.tiles, 16, 16);
-		public static Sprite oneal_down = new Sprite(16, 14, 0, SpriteSheet.tiles, 16, 16);
-		public static Sprite oneal_left = new Sprite(16, 15, 0, SpriteSheet.tiles, 16, 16);
-		public static Sprite oneal_right = new Sprite(16, 13, 0, SpriteSheet.tiles, 16, 16);
+	//Scorpion
+		public static Sprite scorpion_up = new Sprite(16, 12, 0, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_down = new Sprite(16, 14, 0, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_left = new Sprite(16, 15, 0, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_right = new Sprite(16, 13, 0, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite oneal_up1 = new Sprite(16, 12, 1, SpriteSheet.tiles, 16, 16);
-		public static Sprite oneal_up2 = new Sprite(16, 12, 2, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_up1 = new Sprite(16, 12, 1, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_up2 = new Sprite(16, 12, 2, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite oneal_down1 = new Sprite(16, 14, 1, SpriteSheet.tiles, 16, 16);
-		public static Sprite oneal_down2 = new Sprite(16, 14, 2, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_down1 = new Sprite(16, 14, 1, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_down2 = new Sprite(16, 14, 2, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite oneal_left1 = new Sprite(16, 15, 1, SpriteSheet.tiles, 16, 16);
-		public static Sprite oneal_left2 = new Sprite(16, 15, 2, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_left1 = new Sprite(16, 15, 1, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_left2 = new Sprite(16, 15, 2, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite oneal_right1 = new Sprite(16, 13, 1, SpriteSheet.tiles, 16, 16);
-		public static Sprite oneal_right2 = new Sprite(16, 13, 2, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_right1 = new Sprite(16, 13, 1, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_right2 = new Sprite(16, 13, 2, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite oneal_dead = new Sprite(16, 12, 3, SpriteSheet.tiles, 16, 16);
-		public static Sprite oneal_dead1 = new Sprite(16, 13, 3, SpriteSheet.tiles, 12, 14);
-		public static Sprite oneal_dead2 = new Sprite(16, 14, 3, SpriteSheet.tiles, 8, 11);
-		public static Sprite oneal_dead3 = new Sprite(16, 15, 3, SpriteSheet.tiles, 6, 9);
+		public static Sprite scorpion_dead = new Sprite(16, 12, 3, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_dead1 = new Sprite(16, 13, 3, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_dead2 = new Sprite(16, 14, 3, SpriteSheet.tiles, 16, 16);
+		public static Sprite scorpion_dead3 = new Sprite(16, 15, 3, SpriteSheet.tiles, 16, 16);
 		
-	//Doll
-		public static Sprite doll_left1 = new Sprite(16, 13, 0, SpriteSheet.tiles, 16, 16);
-		public static Sprite doll_left2 = new Sprite(16, 13, 1, SpriteSheet.tiles, 16, 16);
-		public static Sprite doll_left3 = new Sprite(16, 13, 2, SpriteSheet.tiles, 16, 16);
+	//Alien
+		public static Sprite alien_up = new Sprite(16, 4, 4, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_down = new Sprite(16, 6, 4, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_left = new Sprite(16, 7, 4, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_right = new Sprite(16, 5, 4, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite doll_right1 = new Sprite(16, 14, 0, SpriteSheet.tiles, 16, 16);
-		public static Sprite doll_right2 = new Sprite(16, 14, 1, SpriteSheet.tiles, 16, 16);
-		public static Sprite doll_right3 = new Sprite(16, 14, 2, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_up1 = new Sprite(16, 4, 5, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_up2 = new Sprite(16, 4, 6, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite doll_dead = new Sprite(16, 13, 3, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_down1 = new Sprite(16, 6, 5, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_down2 = new Sprite(16, 6, 6, SpriteSheet.tiles, 16, 16);
 		
-	//TROLLER
-		public static Sprite troller_up = new Sprite(16, 4, 4, SpriteSheet.tiles, 15, 16);
-		public static Sprite troller_down = new Sprite(16, 7, 4, SpriteSheet.tiles, 15, 16);
-		public static Sprite troller_left = new Sprite(16, 6, 4, SpriteSheet.tiles, 15, 16);
-		public static Sprite troller_right = new Sprite(16, 5, 4, SpriteSheet.tiles, 15, 16);
+		public static Sprite alien_left1 = new Sprite(16, 7, 5, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_left2 = new Sprite(16, 7, 6, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite troller_up1 = new Sprite(16, 4, 5, SpriteSheet.tiles, 15, 16);
-		public static Sprite troller_up2 = new Sprite(16, 4, 6, SpriteSheet.tiles, 15, 16);
+		public static Sprite alien_right1 = new Sprite(16, 5, 5, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_right2 = new Sprite(16, 5, 6, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite troller_down1 = new Sprite(16, 6, 5, SpriteSheet.tiles, 15, 16);
-		public static Sprite troller_down2 = new Sprite(16, 6, 6, SpriteSheet.tiles, 15, 16);
+		public static Sprite alien_dead = new Sprite(16, 4, 7, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_dead1 = new Sprite(16, 5, 7, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_dead2 = new Sprite(16, 6, 7, SpriteSheet.tiles, 16, 16);
+		public static Sprite alien_dead3 = new Sprite(16, 7, 7, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite troller_left1 = new Sprite(16, 7, 5, SpriteSheet.tiles, 15, 16);
-		public static Sprite troller_left2 = new Sprite(16, 7, 6, SpriteSheet.tiles, 15, 16);
+	//Bat
+		public static Sprite bat_up = new Sprite(16, 8, 4, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_down = new Sprite(16, 10, 4, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_left = new Sprite(16, 11, 4, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_right = new Sprite(16, 9, 4, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite troller_right1 = new Sprite(16, 5, 5, SpriteSheet.tiles, 15, 16);
-		public static Sprite troller_right2 = new Sprite(16, 5, 6, SpriteSheet.tiles, 15, 16);
+		public static Sprite bat_up1 = new Sprite(16, 8, 5, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_up2 = new Sprite(16, 8, 6, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite troller_dead = new Sprite(16, 4, 7, SpriteSheet.tiles, 15, 16);
-		public static Sprite troller_dead1 = new Sprite(16, 5, 7, SpriteSheet.tiles, 16, 16);
-		public static Sprite troller_dead2 = new Sprite(16, 6, 7, SpriteSheet.tiles, 15, 15);
-		public static Sprite troller_dead3 = new Sprite(16, 7, 7, SpriteSheet.tiles, 13, 12);
+		public static Sprite bat_down1 = new Sprite(16, 10, 5, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_down2 = new Sprite(16, 10, 6, SpriteSheet.tiles, 16, 16);
 		
-	//Kondoria
-		public static Sprite kondoria_left1 = new Sprite(16, 10, 5, SpriteSheet.tiles, 16, 16);
-		public static Sprite kondoria_left2 = new Sprite(16, 10, 6, SpriteSheet.tiles, 16, 16);
-		public static Sprite kondoria_left3 = new Sprite(16, 10, 7, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_left1 = new Sprite(16, 11, 5, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_left2 = new Sprite(16, 11, 6, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite kondoria_right1 = new Sprite(16, 11, 5, SpriteSheet.tiles, 16, 16);
-		public static Sprite kondoria_right2 = new Sprite(16, 11, 6, SpriteSheet.tiles, 16, 16);
-		public static Sprite kondoria_right3 = new Sprite(16, 11, 7, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_right1 = new Sprite(16, 9, 5, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_right2 = new Sprite(16, 9, 6, SpriteSheet.tiles, 16, 16);
 		
-		public static Sprite kondoria_dead = new Sprite(16, 10, 8, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_dead = new Sprite(16, 8, 7, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_dead1 = new Sprite(16, 9, 7, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_dead2 = new Sprite(16, 10, 7, SpriteSheet.tiles, 16, 16);
+		public static Sprite bat_dead3 = new Sprite(16, 11, 7, SpriteSheet.tiles, 16, 16);
 		
 		
 	//Bomber Negative
