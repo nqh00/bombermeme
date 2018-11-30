@@ -25,9 +25,9 @@ private Clip clip;
 	 * Khai báo đường dẫn cho âm thanh
 	 * @param path
 	 */
-	public Sound(File path) {
+	public Sound(String path) {
 		try {
-			AudioInputStream ais = AudioSystem.getAudioInputStream(path);
+			AudioInputStream ais = AudioSystem.getAudioInputStream(new File(path));
 			clip = AudioSystem.getClip();
 			clip.open(ais);
 		} catch (UnsupportedAudioFileException e) {
