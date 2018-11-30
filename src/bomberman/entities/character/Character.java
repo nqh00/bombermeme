@@ -19,7 +19,7 @@ public abstract class Character extends AnimatedEntity {
 	protected int _direction = -1;
 	protected boolean _alive = true;
 	protected boolean _moving = false;
-	protected int _timeAfter = 20;
+	protected int _timeAfter = 10;
 	
 
 	/**

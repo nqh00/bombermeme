@@ -7,7 +7,6 @@
 package bomberman.entities.character.enemy;
 
 import java.awt.Color;
-import java.io.File;
 
 import bomberman.Board;
 import bomberman.Game;
@@ -21,7 +20,6 @@ import bomberman.entities.character.enemy.ai.AIMedium;
 import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
 import bomberman.level.Coordinates;
-import bomberman.sound.Sound;
 
 /**
  * Bao gồm tất cả Enemy
@@ -36,7 +34,7 @@ public abstract class Enemy extends Character {
 	protected double _steps;
 	
 	protected Sprite _deadSprite, _deadSprite1, _deadSprite2, _deadSprite3;
-	protected int _finalAnimation = 28;	//thời gian xử lý hiệu ứng tiêu diệt (<timeAnimate để tránh lặp lại hiệu ứng)
+	protected int _finalAnimation = 18;	//thời gian xử lý hiệu ứng tiêu diệt (<timeAnimate để tránh lặp lại hiệu ứng)
 	
 	/**
 	 * Hiển thị hình ảnh của thực thể Enemy trên board
@@ -77,7 +75,7 @@ public abstract class Enemy extends Character {
 				setSprite(_deadSprite);
 				_animate = 0;
 			} else
-				setSprite(Sprite.movingSprite(_deadSprite1, _deadSprite2, _deadSprite3, _animate, 30));
+				setSprite(Sprite.movingSprite(_deadSprite1, _deadSprite2, _deadSprite3, _animate, 20));
 		}
 		screen.renderEntity((int)_x, (int)_y - _sprite.getSize(), this);
 	}
@@ -178,7 +176,7 @@ public abstract class Enemy extends Character {
 	}
 	
 	/**
-	 * Setter: sprite của enemy lúc bị tiêu diệt
+	 * Setter: sprite của enemy lúc không di chuyển
 	 */
 	protected void setDeadSprite(Sprite dead, Sprite dead1, Sprite dead2, Sprite dead3) {
 		_deadSprite = dead;
@@ -186,6 +184,7 @@ public abstract class Enemy extends Character {
 		_deadSprite2 = dead2;
 		_deadSprite3 = dead3;
 	}
+	
 	
 	/**
 	 * Triển khai thuật toán AILow
