@@ -21,6 +21,7 @@ import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
 import bomberman.input.Keyboard;
 import bomberman.level.Coordinates;
+import bomberman.sound.Sound;
 
 /**
  * Nhân vật của người chơi
@@ -32,6 +33,9 @@ public class Bomber extends Character {
 	protected int _timeBetweenPutBombs = 0;	//thời gian giữa 2 bomb được đặt
 	protected int _finalAnimation = 25;	//thời gian xử lý hiệu ứng (<timeAnimate để tránh lặp lại hiệu ứng)
 
+	private Sound bomberDie = new Sound("res/sounds/bomberdie.wav");
+
+	
 	/**
 	 * Hiển thị hình ảnh của thực thể Bomber
 	 * @param x
@@ -76,6 +80,7 @@ public class Bomber extends Character {
         if(isAlive())
             chooseSprite();
         else {
+        	bomberDie.play();
         	if(_timeAfter > 0) {
         		_animate = 0;
         		setSprite(Sprite.player_dead);
