@@ -61,6 +61,10 @@ public class Board implements IRender {
 	@Override
 	public void update() {
 		// TODO: Cập nhật trạng thái game
+		if(_input.pause)
+			pauseGame();
+		if(_game.isPaused() && _input.resume)
+			resumeGame();
 		if(_game.isPaused())
 			return;
 	
@@ -168,12 +172,25 @@ public class Board implements IRender {
 		_game.bombRate = 1;	
 	}
 	
+	
+	/**
+	 * Resume game
+	 */
+	public void resumeGame() {
+		_game.resetScreenDelay();
+		_screenToShow = -1;
+		_game.run();
+	}
+	
 	/**
 	 * Pause game
 	 */
 	public void pauseGame() {
-
+		_game.resetScreenDelay();
+		_screenToShow = 3;
+		_game.pause();
 	}
+	
 	
 	/**
 	 * End game
