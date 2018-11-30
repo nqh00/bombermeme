@@ -33,7 +33,9 @@ public abstract class Enemy extends Character {
 	protected final double rest;
 	protected double _steps;
 	
+	protected Sprite _idleSprite, _idleSprite1, _idleSprite2;
 	protected Sprite _deadSprite, _deadSprite1, _deadSprite2, _deadSprite3;
+	
 	protected int _finalAnimation = 18;	//thời gian xử lý hiệu ứng tiêu diệt (<timeAnimate để tránh lặp lại hiệu ứng)
 	
 	/**
@@ -68,8 +70,13 @@ public abstract class Enemy extends Character {
 	@Override
 	public void render(Screen screen) {
 		// TODO: Cập nhật hình ảnh của Enemy theo trạng thái còn sống và bị tiêu diệt
-		if(isAlive())
-			chooseSprite();
+		if(isAlive()) {
+			if(isMoving())
+				chooseSprite();
+			else
+				setSprite(Sprite.movingSprite(_idleSprite, _idleSprite1, _idleSprite2, _animate, 40));
+		}
+		
 		else {
 			if(getTimeAfter() > 0) {
 				setSprite(_deadSprite);
@@ -173,6 +180,15 @@ public abstract class Enemy extends Character {
 	 */
 	protected boolean isMoving() {
 		return _moving;
+	}
+	
+	/**
+	 * Setter: sprite của enemy lúc không di chuyển
+	 */
+	protected void setIdleSprite(Sprite idle, Sprite idle1, Sprite idle2) {
+		_idleSprite = idle;
+		_idleSprite1 = idle1;
+		_idleSprite2 = idle2;
 	}
 	
 	/**
