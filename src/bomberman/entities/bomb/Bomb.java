@@ -16,6 +16,7 @@ import bomberman.entities.character.enemy.Enemy;
 import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
 import bomberman.level.Coordinates;
+import bomberman.sound.Sound;
 
 /**
  * Thể hiện của thực thể bomb
@@ -28,6 +29,8 @@ public class Bomb extends AnimatedEntity {
 	private boolean _exploded = false;	//bom chưa nổ
 	private boolean _allowedToPassThru = true;	//cho phép Bomber đi qua khi quả bomb được đặt
 		
+	private Sound bombExplode = new Sound("res/sounds/bombexplode.wav");
+
 	/**
 	 * Hiển thị quả bomb do Bomber(người chơi) đặt
 	 * @param x
@@ -67,6 +70,7 @@ public class Bomb extends AnimatedEntity {
 		if(!isExplode())
 			setSprite(Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, _animate, 20));
 		else {
+			bombExplode.play();
 			setSprite(Sprite.voidSprite);
 			renderExplosion(screen);
 		}
