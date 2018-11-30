@@ -20,6 +20,7 @@ import bomberman.entities.character.enemy.ai.AIMedium;
 import bomberman.graphics.Screen;
 import bomberman.graphics.Sprite;
 import bomberman.level.Coordinates;
+import bomberman.sound.Sound;
 
 /**
  * Bao gồm tất cả Enemy
@@ -37,6 +38,9 @@ public abstract class Enemy extends Character {
 	protected Sprite _deadSprite, _deadSprite1, _deadSprite2, _deadSprite3;
 	
 	protected int _finalAnimation = 18;	//thời gian xử lý hiệu ứng tiêu diệt (<timeAnimate để tránh lặp lại hiệu ứng)
+	
+	private Sound enemyDie = new Sound("res/sounds/enemydie.wav");
+
 	
 	/**
 	 * Hiển thị hình ảnh của thực thể Enemy trên board
@@ -78,6 +82,7 @@ public abstract class Enemy extends Character {
 		}
 		
 		else {
+			enemyDie.play();
 			if(getTimeAfter() > 0) {
 				setSprite(_deadSprite);
 				_animate = 0;
