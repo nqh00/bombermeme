@@ -23,6 +23,7 @@ import bomberman.graphics.Screen;
 import bomberman.input.Keyboard;
 import bomberman.level.FileLevel;
 import bomberman.level.Level;
+import bomberman.sound.Sound;
 
 /**
  * Quản lý thao tác điều khiển, load level, render các màn hình của game
@@ -46,6 +47,10 @@ public class Board implements IRender {
 	private int _time = Game.TIME;
 	private int _points = Game.POINTS;
 	private int _lives = Game.LIVES;
+	
+	private Sound themeSong = new Sound("res/sounds/theme.wav");
+	private Sound pauseSound = new Sound("res/sounds/pause.wav");
+	private Sound endSound = new Sound("res/sounds/end.wav");
 	
 	/**
 	 * Hiển thị màn chơi
@@ -131,6 +136,7 @@ public class Board implements IRender {
 		_messages.clear();
 		
 		try {
+			themeSong.loop();
 			_levelLoader = new FileLevel(this, "res/levels/Level" + level + ".txt");
 			_entities = new Entity[_levelLoader.getHeight() * _levelLoader.getWidth()];
 			_levelLoader.createEntities();
@@ -180,6 +186,8 @@ public class Board implements IRender {
 		_game.resetScreenDelay();
 		_screenToShow = -1;
 		_game.run();
+		themeSong.loop();
+		pauseSound.stop();
 	}
 	
 	/**
@@ -189,6 +197,8 @@ public class Board implements IRender {
 		_game.resetScreenDelay();
 		_screenToShow = 3;
 		_game.pause();
+		themeSong.stop();
+		pauseSound.loop();
 	}
 	
 	
@@ -199,6 +209,8 @@ public class Board implements IRender {
 		_screenToShow = 1;
 		_game.resetScreenDelay();
 		_game.pause();
+		themeSong.stop();
+		endSound.play();
 	}
 	
 	/*
