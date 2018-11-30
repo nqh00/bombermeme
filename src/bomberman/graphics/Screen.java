@@ -22,7 +22,7 @@ import bomberman.entities.character.Bomber;
 public class Screen {
 	protected int _width, _height;
 	public int[] _pixels;
-	private int _transparentColor = 0xffff00ff;	//màu hồng
+	private int _transparentColor = 0xff202040;	//màu tím than
 	public static int xOffset = 0, yOffset = 0;
 	private Font font;
 
