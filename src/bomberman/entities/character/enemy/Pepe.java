@@ -15,6 +15,7 @@ public class Pepe extends Enemy {
 	public Pepe(int x, int y, Board board) {
 		super(x, y, board, Game.getBomberSpeed() / 5, 100);
 		setSprite(Sprite.pepe_down);
+		setIdleSprite(Sprite.pepe_down, Sprite.pepe_down1, Sprite.pepe_down2);
 		setDeadSprite(Sprite.pepe_dead, Sprite.pepe_dead1, Sprite.pepe_dead2, Sprite.pepe_dead3);
 		implementAILow();
 	}
@@ -37,9 +38,6 @@ public class Pepe extends Enemy {
 			case 3:
 				if(isMoving())
 					setSprite(Sprite.movingSprite(Sprite.pepe_left, Sprite.pepe_left1, Sprite.pepe_left2, _animate, 20));
-				break;
-			default:
-				setSprite(Sprite.pepe_down);
 				break;
 		}
 	}
