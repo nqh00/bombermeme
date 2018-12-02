@@ -6,6 +6,9 @@
 
 package bomberman.entities.tile.item;
 
+import bomberman.entities.Entity;
+import bomberman.entities.bomb.Flame;
+import bomberman.entities.character.Bomber;
 import bomberman.entities.tile.Tile;
 import bomberman.graphics.Sprite;
 
@@ -26,6 +29,24 @@ public abstract class Item extends Tile {
 	public Item(int x, int y, int level, Sprite sprite) {
 		super(x, y, sprite);
 		_level = level;
+	}
+	
+	@Override
+	public boolean collide(Entity e) {
+		// TODO: Xử lý khi Bomber ăn các vật phẩm Item
+		if(e instanceof Bomber) {
+			((Bomber)e).addItem(this);
+			remove();
+			return true;
+		}
+		
+		// TODO: Xử lý khi va chạm với Flame của Bomb
+		if(e instanceof Flame) {
+			remove();
+			return true;
+		}
+		
+		return false;
 	}
 	
 	/**

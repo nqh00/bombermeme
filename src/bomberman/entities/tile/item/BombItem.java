@@ -28,16 +28,4 @@ public class BombItem extends Item {
 		_active = true;
 		Game.addBombRate(1);
 	}
-	
-	@Override
-	public boolean collide(Entity e) {
-		// TODO: Xử lý khi Bomber ăn vật phẩm BombItem
-		if(e instanceof Bomber) {
-			((Bomber)e).addItem(this);
-			remove();
-			return true;
-		}
-		
-		return false;
-	}
 }
