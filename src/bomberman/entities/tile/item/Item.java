@@ -6,6 +6,9 @@
 
 package bomberman.entities.tile.item;
 
+import bomberman.entities.Entity;
+import bomberman.entities.bomb.Flame;
+import bomberman.entities.character.Bomber;
 import bomberman.entities.tile.Tile;
 import bomberman.graphics.Sprite;
 
@@ -13,7 +16,6 @@ import bomberman.graphics.Sprite;
  * Bao gồm các vật phẩm: BombItem, FlameItem và SpeedItem
  */
 public abstract class Item extends Tile {
-	protected int _duration = -1;	//-1 là luôn có hiệu lực
 	protected boolean _active = false;
 	protected int _level;
 	
@@ -28,24 +30,28 @@ public abstract class Item extends Tile {
 		_level = level;
 	}
 	
+	@Override
+	public boolean collide(Entity e) {
+		// TODO: Xử lý khi Bomber ăn các vật phẩm Item
+		if(e instanceof Bomber) {
+			((Bomber)e).addItem(this);
+			remove();
+			return true;
+		}
+		
+		// TODO: Xử lý khi va chạm với Flame của Bomb
+		if(e instanceof Flame) {
+			remove();
+			return true;
+		}
+		
+		return false;
+	}
+	
 	/**
 	 * Setter: giá trị của Item
 	 */
 	public abstract void setValue();
-	
-	public void removeLive() {
-		if(_duration > 0) 
-			_duration--;
-		if(_duration == 0)
-			_active = false;
-	}
-
-	/**
-	 * Getter: thời gian hiệu lực
-	 */
-	public int getDuration() {
-		return _duration;
-	}
 
 	/**
 	 * Getter: kiểm tra hiệu lực

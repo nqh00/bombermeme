@@ -28,15 +28,4 @@ public class SpeedItem extends Item {
 		_active = true;
 		Game.addBomberSpeed(0.1);
 	}
-	
-	@Override
-	public boolean collide(Entity e) {
-		// TODO: Xử lý khi Bomber ăn vật phẩm SpeedItem
-		if(e instanceof Bomber) {
-			((Bomber)e).addItem(this);
-			remove();
-			return true;
-		}
-		return false;
-	}
 }

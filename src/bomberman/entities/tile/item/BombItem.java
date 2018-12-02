@@ -7,8 +7,6 @@
 package bomberman.entities.tile.item;
 
 import bomberman.Game;
-import bomberman.entities.Entity;
-import bomberman.entities.character.Bomber;
 import bomberman.graphics.Sprite;
 
 /**
@@ -27,17 +25,5 @@ public class BombItem extends Item {
 	public void setValue() {
 		_active = true;
 		Game.addBombRate(1);
-	}
-	
-	@Override
-	public boolean collide(Entity e) {
-		// TODO: Xử lý khi Bomber ăn vật phẩm BombItem
-		if(e instanceof Bomber) {
-			((Bomber)e).addItem(this);
-			remove();
-			return true;
-		}
-		
-		return false;
 	}
 }
