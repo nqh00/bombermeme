@@ -24,20 +24,20 @@ public class Pepe extends Enemy {
 	protected void chooseSprite() {
 		switch(getDirection()) {
 			case 0:
-				if(isMoving())	
-					setSprite(Sprite.movingSprite(Sprite.pepe_up, Sprite.pepe_up1, Sprite.pepe_up2, _animate, 20));
+				if(isMoving())
+					setSprite(Sprite.movingSprite(20, _animate, Sprite.pepe_up, Sprite.pepe_up1, Sprite.pepe_up2));
 				break;
 			case 1:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.pepe_right, Sprite.pepe_right1, Sprite.pepe_right2, _animate, 20));
+					setSprite(Sprite.movingSprite(20, _animate, Sprite.pepe_right, Sprite.pepe_right1, Sprite.pepe_right2));
 				break;
 			case 2:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.pepe_down, Sprite.pepe_down1, Sprite.pepe_down2, _animate, 20));
+					setSprite(Sprite.movingSprite(20, _animate, Sprite.pepe_down, Sprite.pepe_down1, Sprite.pepe_down2));
 				break;
 			case 3:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.pepe_left, Sprite.pepe_left1, Sprite.pepe_left2, _animate, 20));
+					setSprite(Sprite.movingSprite(20, _animate, Sprite.pepe_left, Sprite.pepe_left1, Sprite.pepe_left2));
 				break;
 		}
 	}

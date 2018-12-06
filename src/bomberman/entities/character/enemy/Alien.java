@@ -25,19 +25,19 @@ public class Alien extends Enemy {
 		switch(getDirection()) {
 			case 0:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.alien_up, Sprite.alien_up1, Sprite.alien_up2, _animate, 10));
+					setSprite(Sprite.movingSprite(10, _animate, Sprite.alien_up, Sprite.alien_up1, Sprite.alien_up2));
 				break;
 			case 1:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.alien_right, Sprite.alien_right1, Sprite.alien_right2, _animate, 10));
+					setSprite(Sprite.movingSprite(10, _animate, Sprite.alien_right, Sprite.alien_right1, Sprite.alien_right2));
 				break;
 			case 2:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.alien_down, Sprite.alien_down1, Sprite.alien_down2, _animate, 10));
+					setSprite(Sprite.movingSprite(10, _animate, Sprite.alien_down, Sprite.alien_down1, Sprite.alien_down2));
 				break;
 			case 3:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.alien_left, Sprite.alien_left1, Sprite.alien_left2, _animate, 10));
+					setSprite(Sprite.movingSprite(10, _animate, Sprite.alien_left, Sprite.alien_left1, Sprite.alien_left2));
 				break;
 		}
 	}

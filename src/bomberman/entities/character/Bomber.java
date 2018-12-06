@@ -86,7 +86,7 @@ public class Bomber extends Character {
         		setSprite(Sprite.player_dead);
         	}
         	else
-        		setSprite(Sprite.movingSprite(Sprite.player_dead1, Sprite.player_dead2, Sprite.player_dead3, _animate, 27));
+        		setSprite(Sprite.movingSprite(27, _animate, Sprite.player_dead1, Sprite.player_dead2, Sprite.player_dead3));
         }
 
         screen.renderEntity((int) _x, (int) _y - _sprite.getSize(), this);		
@@ -251,25 +251,22 @@ public class Bomber extends Character {
 	        case 0:
 	        	setSprite(Sprite.player_up);
 	            if(isMoving())
-	            	setSprite(Sprite.movingSprite(Sprite.player_up, Sprite.player_up1, Sprite.player_up2, _animate, 9));
-	            break;	
+	            	setSprite(Sprite.movingSprite(9, _animate, Sprite.player_up, Sprite.player_up1, Sprite.player_up2));
+	            break;
 	        case 1:
 	        	setSprite(Sprite.player_right);
 	            if(isMoving())
-	            	setSprite(Sprite.movingSprite(Sprite.player_right, Sprite.player_right1, Sprite.player_right2, _animate, 9));
+	            	setSprite(Sprite.movingSprite(9, _animate, Sprite.player_right, Sprite.player_right1, Sprite.player_right2));
 	            break;
 	        case 2:
 	        	setSprite(Sprite.player_down);
 	            if(isMoving())
-	            	setSprite(Sprite.movingSprite(Sprite.player_down, Sprite.player_down1, Sprite.player_down2, _animate, 9));
+	            	setSprite(Sprite.movingSprite(9, _animate, Sprite.player_down, Sprite.player_down1, Sprite.player_down2));
 	            break;
 	        case 3:
 	        	setSprite(Sprite.player_left);
 	            if(isMoving())
-	            	setSprite(Sprite.movingSprite(Sprite.player_left, Sprite.player_left1, Sprite.player_left2, _animate, 9));
-	            break;
-	        default:
-	        	setSprite(Sprite.player_down);
+	            	setSprite(Sprite.movingSprite(9, _animate, Sprite.player_left, Sprite.player_left1, Sprite.player_left2));
 	            break;
 		}
 	}

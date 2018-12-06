@@ -68,7 +68,7 @@ public class Bomb extends AnimatedEntity {
 	public void render(Screen screen) {
 		// TODO: Cập nhật hình ảnh của quả bomb và vụ nổ theo trạng thái
 		if(!isExplode())
-			setSprite(Sprite.movingSprite(Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2, _animate, 20));
+			setSprite(Sprite.movingSprite(20, _animate, Sprite.bomb, Sprite.bomb_1, Sprite.bomb_2));
 		else {
 			bombExplode.play();
 			setSprite(Sprite.voidSprite);

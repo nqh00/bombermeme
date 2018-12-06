@@ -289,37 +289,16 @@ public class Sprite {
 	}
 
 	/**
-	 * Tạo hình chuyển động cho thực thể với 7 hình ảnh
+	 * Tạo hình chuyển động cho thực thể với n hình ảnh
 	 */
-	public static Sprite movingSprite(Sprite x0, Sprite x1, Sprite x2, Sprite x3, Sprite x4, Sprite x5, Sprite x6, int animate, int time) {
+	public static Sprite movingSprite(int time, int animate, Sprite ... sprites) {
 		int calculate = animate % time;
-		int diff = time / 7;
-		if(calculate < diff)	return x0;
-		if(calculate < diff * 2)	return x1;
-		if(calculate < diff * 3)	return x2;
-		if(calculate < diff * 4)	return x3;
-		if(calculate < diff * 5)	return x4;
-		if(calculate < diff * 6)	return x5;
-		return x6;
-	}
-	
-	/**
-	 * Tạo hình chuyển động cho thực thể với 3 hình ảnh
-	 */
-	public static Sprite movingSprite(Sprite x0, Sprite x1, Sprite x2, int animate, int time) {
-		int calculate = animate % time;
-		int diff = time / 3;
-		if(calculate < diff)	return x0;
-		if(calculate < diff * 2)	return x1;
-		return x2;
-	}
-	
-	/**
-	 * Tạo hình chuyển động cho thực thể với 2 hình ảnh
-	 */
-	public static Sprite movingSprite(Sprite x1, Sprite x2, int animate, int time) {
-		int diff = time / 2;
-		return (animate % time > diff) ? x1 : x2; 
+		int diff = time / sprites.length;
+		for (int i = 0; i < sprites.length; i++) {
+			if(calculate < diff * (i + 1))
+				return sprites[i];
+		}
+		return sprites[sprites.length - 1];
 	}
 
 	/**

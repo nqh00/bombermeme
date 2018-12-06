@@ -63,27 +63,27 @@ public class FlameSegment extends AnimatedEntity {
 	protected void chooseSprite() {
 		switch(_direction) {
 		case 0:
-			setSprite(Sprite.movingSprite(Sprite.bomb_exploded, Sprite.bomb_exploded1, Sprite.bomb_exploded2, Sprite.bomb_exploded3, Sprite.bomb_exploded2, Sprite.bomb_exploded1, Sprite.bomb_exploded, _animate, 56));
+			setSprite(Sprite.movingSprite(56, _animate, Sprite.bomb_exploded, Sprite.bomb_exploded1, Sprite.bomb_exploded2, Sprite.bomb_exploded3, Sprite.bomb_exploded2, Sprite.bomb_exploded1, Sprite.bomb_exploded));
 			break;
 		case 1:
-			setSprite(Sprite.movingSprite(Sprite.explosion_vertical, Sprite.explosion_vertical1, Sprite.explosion_vertical2, Sprite.explosion_vertical3, Sprite.explosion_vertical2, Sprite.explosion_vertical1, Sprite.explosion_vertical, _animate, 56));
+			setSprite(Sprite.movingSprite(56, _animate, Sprite.explosion_vertical, Sprite.explosion_vertical1, Sprite.explosion_vertical2, Sprite.explosion_vertical3, Sprite.explosion_vertical2, Sprite.explosion_vertical1, Sprite.explosion_vertical));
 			if(_last) 
-				setSprite(Sprite.movingSprite(Sprite.explosion_vertical_top_last, Sprite.explosion_vertical_top_last1, Sprite.explosion_vertical_top_last2, Sprite.explosion_vertical_top_last3, Sprite.explosion_vertical_top_last2, Sprite.explosion_vertical_top_last1, Sprite.explosion_vertical_top_last, _animate, 56));
+				setSprite(Sprite.movingSprite(56, _animate, Sprite.explosion_vertical_top_last, Sprite.explosion_vertical_top_last1, Sprite.explosion_vertical_top_last2, Sprite.explosion_vertical_top_last3, Sprite.explosion_vertical_top_last2, Sprite.explosion_vertical_top_last1, Sprite.explosion_vertical_top_last));
 			break;
 		case 2:
-			setSprite(Sprite.movingSprite(Sprite.explosion_horizontal, Sprite.explosion_horizontal1, Sprite.explosion_horizontal2, Sprite.explosion_horizontal3, Sprite.explosion_horizontal2, Sprite.explosion_horizontal1, Sprite.explosion_horizontal, _animate, 56));
+			setSprite(Sprite.movingSprite(56, _animate, Sprite.explosion_horizontal, Sprite.explosion_horizontal1, Sprite.explosion_horizontal2, Sprite.explosion_horizontal3, Sprite.explosion_horizontal2, Sprite.explosion_horizontal1, Sprite.explosion_horizontal));
 			if(_last) 
-				setSprite(Sprite.movingSprite(Sprite.explosion_horizontal_right_last, Sprite.explosion_horizontal_right_last1, Sprite.explosion_horizontal_right_last2, Sprite.explosion_horizontal_right_last3, Sprite.explosion_horizontal_right_last2, Sprite.explosion_horizontal_right_last1, Sprite.explosion_horizontal_right_last, _animate, 56));
+				setSprite(Sprite.movingSprite(56, _animate, Sprite.explosion_horizontal_right_last, Sprite.explosion_horizontal_right_last1, Sprite.explosion_horizontal_right_last2, Sprite.explosion_horizontal_right_last3, Sprite.explosion_horizontal_right_last2, Sprite.explosion_horizontal_right_last1, Sprite.explosion_horizontal_right_last));
 			break;
 		case 3:
-			setSprite(Sprite.movingSprite(Sprite.explosion_vertical, Sprite.explosion_vertical1, Sprite.explosion_vertical2, Sprite.explosion_vertical3, Sprite.explosion_vertical2, Sprite.explosion_vertical1, Sprite.explosion_vertical, _animate, 56));
+			setSprite(Sprite.movingSprite(56, _animate, Sprite.explosion_vertical, Sprite.explosion_vertical1, Sprite.explosion_vertical2, Sprite.explosion_vertical3, Sprite.explosion_vertical2, Sprite.explosion_vertical1, Sprite.explosion_vertical));
 			if(_last) 
-				setSprite(Sprite.movingSprite(Sprite.explosion_vertical_down_last, Sprite.explosion_vertical_down_last1, Sprite.explosion_vertical_down_last2, Sprite.explosion_vertical_down_last3,  Sprite.explosion_vertical_down_last2, Sprite.explosion_vertical_down_last1, Sprite.explosion_vertical_down_last, _animate, 56));
+				setSprite(Sprite.movingSprite(56, _animate, Sprite.explosion_vertical_down_last, Sprite.explosion_vertical_down_last1, Sprite.explosion_vertical_down_last2, Sprite.explosion_vertical_down_last3,  Sprite.explosion_vertical_down_last2, Sprite.explosion_vertical_down_last1, Sprite.explosion_vertical_down_last));
 			break;
 		case 4:
-			setSprite(Sprite.movingSprite(Sprite.explosion_horizontal, Sprite.explosion_horizontal1, Sprite.explosion_horizontal2, Sprite.explosion_horizontal3, Sprite.explosion_horizontal2, Sprite.explosion_horizontal1, Sprite.explosion_horizontal, _animate, 56));
+			setSprite(Sprite.movingSprite(56, _animate, Sprite.explosion_horizontal, Sprite.explosion_horizontal1, Sprite.explosion_horizontal2, Sprite.explosion_horizontal3, Sprite.explosion_horizontal2, Sprite.explosion_horizontal1, Sprite.explosion_horizontal));
 			if(_last) 
-				setSprite(Sprite.movingSprite(Sprite.explosion_horizontal_left_last, Sprite.explosion_horizontal_left_last1, Sprite.explosion_horizontal_left_last2, Sprite.explosion_horizontal_left_last3, Sprite.explosion_horizontal_left_last2, Sprite.explosion_horizontal_left_last1, Sprite.explosion_horizontal_left_last, _animate, 56));
+				setSprite(Sprite.movingSprite(56, _animate, Sprite.explosion_horizontal_left_last, Sprite.explosion_horizontal_left_last1, Sprite.explosion_horizontal_left_last2, Sprite.explosion_horizontal_left_last3, Sprite.explosion_horizontal_left_last2, Sprite.explosion_horizontal_left_last1, Sprite.explosion_horizontal_left_last));
 			break;
 		}
 	}

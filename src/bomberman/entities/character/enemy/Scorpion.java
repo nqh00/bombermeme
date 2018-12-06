@@ -25,19 +25,19 @@ public class Scorpion extends Enemy {
 		switch(getDirection()) {
 			case 0:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.scorpion_up, Sprite.scorpion_up1, Sprite.scorpion_up2, _animate, 20));
+					setSprite(Sprite.movingSprite(20, _animate, Sprite.scorpion_up, Sprite.scorpion_up1, Sprite.scorpion_up2));
 				break;
 			case 1:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.scorpion_right, Sprite.scorpion_right1, Sprite.scorpion_right2, _animate, 20));
+					setSprite(Sprite.movingSprite(20, _animate, Sprite.scorpion_right, Sprite.scorpion_right1, Sprite.scorpion_right2));
 				break;
 			case 2:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.scorpion_down, Sprite.scorpion_down1, Sprite.scorpion_down2, _animate, 20));
+					setSprite(Sprite.movingSprite(20, _animate, Sprite.scorpion_down, Sprite.scorpion_down1, Sprite.scorpion_down2));
 				break;
 			case 3:
 				if(isMoving())
-					setSprite(Sprite.movingSprite(Sprite.scorpion_left, Sprite.scorpion_left1, Sprite.scorpion_left2, _animate, 20));
+					setSprite(Sprite.movingSprite(20, _animate, Sprite.scorpion_left, Sprite.scorpion_left1, Sprite.scorpion_left2));
 				break;
 		}
 	}

@@ -78,7 +78,7 @@ public abstract class Enemy extends Character {
 			if(isMoving())
 				chooseSprite();
 			else
-				setSprite(Sprite.movingSprite(_idleSprite, _idleSprite1, _idleSprite2, _animate, 40));
+				setSprite(Sprite.movingSprite(40, _animate, _idleSprite, _idleSprite1, _idleSprite2));
 		}
 		
 		else {
@@ -87,7 +87,7 @@ public abstract class Enemy extends Character {
 				setSprite(_deadSprite);
 				_animate = 0;
 			} else
-				setSprite(Sprite.movingSprite(_deadSprite1, _deadSprite2, _deadSprite3, _animate, 20));
+				setSprite(Sprite.movingSprite(20, _animate, _deadSprite1, _deadSprite2, _deadSprite3));
 		}
 		screen.renderEntity((int)_x, (int)_y - _sprite.getSize(), this);
 	}

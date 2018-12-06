@@ -26,22 +26,22 @@ public class Bat extends Enemy {
 	@Override
 	protected void chooseSprite() {
 		switch(getDirection()) {
-		case 0:
-			if(isMoving())
-				setSprite(Sprite.movingSprite(Sprite.bat_up, Sprite.bat_up1, Sprite.bat_up2, _animate, 20));
-			break;
-		case 1:
-			if(isMoving())
-				setSprite(Sprite.movingSprite(Sprite.bat_right, Sprite.bat_right1, Sprite.bat_right2, _animate, 20));
-			break;
-		case 2:
-			if(isMoving())
-				setSprite(Sprite.movingSprite(Sprite.bat_down, Sprite.bat_down1, Sprite.bat_down2, _animate, 20));
-			break;
-		case 3:
-			if(isMoving())
-				setSprite(Sprite.movingSprite(Sprite.bat_left, Sprite.bat_left1, Sprite.bat_left2, _animate, 20));
-			break;
+			case 0:
+				if(isMoving())
+					setSprite(Sprite.movingSprite(40, _animate, Sprite.bat_up, Sprite.bat_up1, Sprite.bat_up2));
+				break;
+			case 1:
+				if(isMoving())
+					setSprite(Sprite.movingSprite(40, _animate, Sprite.bat_right1, Sprite.bat_right2, Sprite.bat_right1, Sprite.bat_right, Sprite.bat_right1));
+				break;
+			case 2:
+				if(isMoving())
+					setSprite(Sprite.movingSprite(40, _animate, Sprite.bat_down, Sprite.bat_down1, Sprite.bat_down2));
+				break;
+			case 3:
+				if(isMoving())
+					setSprite(Sprite.movingSprite(40, _animate, Sprite.bat_left1, Sprite.bat_left2, Sprite.bat_left1, Sprite.bat_left, Sprite.bat_left1));
+				break;
 		}		
 	}
 }
